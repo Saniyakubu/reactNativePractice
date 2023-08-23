@@ -1,30 +1,50 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { Link } from 'expo-router';
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import { Image, Pressable } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function TabOneScreen() {
+import { RefreshControl } from 'react-native';
+
+export default async function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <Link
-        href={{
-          pathname: '/see',
-          params: { name: 'sani', sunneame: 'yakubu' },
-        }}
-      >
-        <Text>Go To Page 3</Text>
-      </Link>
-      <Link href={'/pages'}>
-        <Text>Go To Home</Text>
-      </Link>
-    </View>
+    <SafeAreaProvider>
+      <RefreshControl refreshing={true} colors={['yellow']} />
+      <View style={styles.container}>
+        <Text style={styles.title}>Tab One</Text>
+        <Link
+          href={{
+            pathname: '/see',
+            params: { name: 'sani', sunneame: 'yakubu' },
+          }}
+        >
+          <Text>Go To Page 3</Text>
+        </Link>
+        <Link href={'/pages'}>
+          <Text>Go To Home</Text>
+        </Link>
+        <Link
+          href={{
+            pathname: '/pages',
+            params: {
+              url: 'https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            },
+          }}
+          asChild
+        >
+          <Pressable>
+            {() => (
+              <Image
+                style={{ width: 250, height: 200 }}
+                source={{
+                  uri: 'https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                }}
+              />
+            )}
+          </Pressable>
+        </Link>
+      </View>
+    </SafeAreaProvider>
   );
 }
 

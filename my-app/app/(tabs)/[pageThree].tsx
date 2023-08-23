@@ -3,7 +3,6 @@ import { Tabs, Link } from 'expo-router';
 import { Text, View } from '../../components/Themed';
 import { useLocalSearchParams } from 'expo-router';
 import { useRouter } from 'expo-router';
-import EditScreenInfo from '../../components/EditScreenInfo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 function TabBarIcon(props: {
@@ -29,10 +28,13 @@ export default function TabThreeScreen() {
       <Text>
         Hello {name} @{pageThree}
       </Text>
+      <Link href={'/pages'}>
+        <Text>Go To page</Text>
+      </Link>
+
       <Link href={'/'}>
         <Text>Go To Home</Text>
       </Link>
-      <EditScreenInfo path={`app/(tabs)/${pageThree}.tsx`} />
       <Text onPress={() => router.back()}>back</Text>
       <Text onPress={() => router.push('/modal')}>modal</Text>
     </View>

@@ -1,9 +1,13 @@
 import { Text, View, SafeAreaView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { styles3 } from '../../styles/style';
+import { RefreshControl, ScrollView } from 'react-native';
 function Weather() {
   return (
-    <SafeAreaView style={styles3.view}>
+    <ScrollView
+      style={styles3.view}
+      RefreshControl={<RefreshControl refreshing={true} colors={['yellow']} />}
+    >
       <Feather name="sun" size={24} color="black" />
       <View style={styles3.wrapper}>
         <Text>Hello</Text>
@@ -11,7 +15,7 @@ function Weather() {
       <View style={styles3.end}>
         <Text>End</Text>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
