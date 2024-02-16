@@ -1,11 +1,13 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "../components/Header";
 const TabsLayout = () => {
   return (
     <Tabs>
       <Tabs.Screen
         name="index"
         options={{
+          header: () => <Header />,
           tabBarLabel: "main",
           tabBarIcon: ({ size, color }) => {
             return <Ionicons name="logo-windows" size={size} color={color} />;
